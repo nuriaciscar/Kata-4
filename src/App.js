@@ -1,6 +1,8 @@
+
 import "./App.css";
 import { useState } from "react";
 import Number from "./Number";
+
 import Button from "./Button";
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
   };
 
   return (
+
     <>
       <Button text="<<" actionOnClick={decrement} />
       {texts.map((text) => (
@@ -28,6 +31,7 @@ function App() {
       ))}
       <Button text=">>" actionOnClick={increment} />
     </>
+
   );
 }
 
