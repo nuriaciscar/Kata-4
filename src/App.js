@@ -1,23 +1,37 @@
-import logo from "./logo.svg";
+
 import "./App.css";
+import { useState } from "react";
+import Number from "./Number";
 
 import Button from "./Button";
 
 function App() {
+  const [texts, setText] = useState([1, 2, 3, 4, 5]);
+
+  const increment = () => {
+    if (texts[4] < 20) {
+      const newArray = texts.map((text) => (text += 1));
+      setText(newArray);
+    }
+  };
+
+  const decrement = () => {
+    if (texts[0] > 0) {
+      const newArray = texts.map((text) => text - 1);
+      setText(newArray);
+    }
+  };
+
   return (
-    // <ul>
-    //   <li>
-    //     <Button text="<<" onClick={previous}></Button>
-    //   </li>
-    //   <li className="number">{value}</li>
-    //   <li className="number">{value}</li>
-    //   <li className="number">{value}</li>
-    //   <li className="number">{value}</li>
-    //   <li className="number">{value}</li>
-    //   <li>
-    //     <Button text=">>" onClick={next}></Button>
-    //   </li>
-    // </ul>
+
+    <>
+      <Button text="<<" actionOnClick={decrement} />
+      {texts.map((text) => (
+        <Number key={text} text={text} />
+      ))}
+      <Button text=">>" actionOnClick={increment} />
+    </>
+
   );
 }
 
